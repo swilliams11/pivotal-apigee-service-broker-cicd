@@ -42,10 +42,12 @@ The `customers` folder includes a sample CF application and an `apigee` folder t
 
 
 ## Shell scripts
-The `cf_deploy_app.sh` will execute the following items
+You only need to execute the `cf_deploy_app.sh` script the first time you create the app and the Apigee proxy.  There is no need to execute this script after the binding.  
+The `cf_deploy_app.sh` will execute the following items:
 1. cf push
 2. cf apigee-bing-org "proxy bind" (create the proxy in Apigee and bind to CF app)
 3. issue a curl command to Jenkins to associate the proxy to the developer's role
+
 
 The `jenkins_build.sh` sends a curl command to Jenkins to build assign the proxy the user just created to their developer role.
 
@@ -109,7 +111,7 @@ You should have a username and password binding.  This username and password is 
 ### Build
 The build script is shown below.  Anything that starts with `$` is an environment variable that is defined as a parameter for the Jenkins job.
 
-```shell
+```py
 #!/usr/bin/env python
 
 import  json,sys,requests,os,time
@@ -228,15 +230,7 @@ payload = json.dumps({
 r = requests.post("https://" + apigee_domain + "/v1/organizations/" + apigee_org + "/userroles/" + role + "/resourcepermissions", data=payload, headers=headers, auth=(os.environ["apigee_username"], os.environ["apigee_password"]))
 print(r.status_code)
 print(r.json())
-
 ```
-
-# TODOS
-* Modify Jenkins build script to pull the audit history of the user only (this is only available in private orgs)
-* Modify the Jenkins build to pull the apigee_user from the user that triggered the build.
-  Last time I checked it showed "remote user" as opposed to the actual user.
-* demonstrate the CI process for a developer moving code from their dev env to a test env.
-* update the shell script to deploy an Apigee proxy from the customers directory.
 
 # Apigee Edge Curl Commands
 These commands could be used in the Jenkins build pipeline.
@@ -265,6 +259,7 @@ The process to fetch a role for a user is
 ```
 curl -X GET -u "username:password" https://api.enterprise.apigee.com/v1/organizations/ORGNAME/userroles
 ```
+
 ```
 Content-Type: application/json
 [
@@ -303,3 +298,11 @@ If the user does not belong to the role.
   "contexts": []
 }
 ```
+
+
+# TODOS
+* Modify Jenkins build script to pull the audit history of the user only (this is only available in private orgs)
+* Modify the Jenkins build to pull the apigee_user from the user that triggered the build.
+  Last time I checked it showed "remote user" as opposed to the actual user.
+* demonstrate the CI process for a developer moving code from their dev env to a test env.
+* update the shell script to deploy an Apigee proxy from the customers directory.
