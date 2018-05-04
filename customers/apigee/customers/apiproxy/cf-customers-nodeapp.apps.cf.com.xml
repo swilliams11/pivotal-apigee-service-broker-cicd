@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="3" name="cf-customers-nodeapp.apps.cf.com">
+    <Basepaths>/customers-nodeapp.apps.cf.com</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1520640026901</CreatedAt>
+    <CreatedBy>williamssean@google.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>cf-customers-nodeapp.apps.cf.com</DisplayName>
+    <LastModifiedAt>1521000932650</LastModifiedAt>
+    <ManifestVersion>ac535d06b001da789d0d3744fbbaa56ce6ae89520bd601deaaa06641f8ae839f47518fccad9bf42393e0c06fa551455f4d974779ceb0ba6298f9b90a48d71384</ManifestVersion>
+    <Policies>
+        <Policy>Service-Callout-1</Policy>
+        <Policy>cf-get-target-url</Policy>
+        <Policy>cf-set-target-url</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://cf-get-target-url.js</Resource>
+        <Resource>jsc://cf-set-target-url.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

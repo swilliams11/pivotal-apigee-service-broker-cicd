@@ -1,0 +1,177 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based coping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadatan
+info:
+  version: "0.0.1"
+  title: Customer Management API CF
+  description: |
+    A brief description of the API.
+    It can be multiple lines.
+host: "customers-nodeapp.apps.cf.com"
+basePath: "/customers"
+schemes:
+- "http"
+- "https"
+# Describe your paths here
+paths:
+  # This is a path endpoint. Change it.
+  /:
+    # This is a HTTP operation
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Gets an array of `customer` objects.
+        Optional query param of **filter** determines
+        filter criteria
+      #    # This is array of GET operation parameters:
+      parameters:
+        # An example parameter that is in query and is require
+        -
+          name: filter
+          type: "string"
+          in: query
+          description: filter
+          required: false
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            title: ArrayOfCustomers
+            type: array
+            items:
+              $ref: "#/definitions/Customer"
+      security:
+      - api_key: []
+    # This is a HTTP operation
+    post:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Create `customer` objects.
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pet object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Customer"
+
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            title: ArrayOfPersons
+            type: array
+            items:
+              title: Person
+              type: object
+              properties:
+                name:
+                  type: string
+                single:
+                  type: boolean
+# This is a path endpoint. Change it.
+  /{id}:
+    # This is a HTTP operation
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Gets `customer` by ID.
+        Optional query param of **q** determines
+        size of returned array
+      #    # This is array of GET operation parameters:
+      parameters:
+        # An example parameter that is in query and is require
+        -
+          name: id
+          in: path
+          description: Customer ID
+          required: true
+          type: string
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            $ref: "#/definitions/Customer"
+securityDefinitions:
+  accesstoken_auth:
+    type: "oauth2"
+    tokenUrl: "https://YOURDOMAIN.apigee.net/oauth/client_credential/accesstoken"
+    flow: "application"
+    scopes:
+      none: none
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+
+definitions:
+  Address:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      street_address:
+        type: "string"
+      city:
+        type: "string"
+    xml:
+      name: "Address"
+  Customer:
+    type: "object"
+    required:
+    - "id"
+    - "username"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      username:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+      userStatus:
+        type: "integer"
+        format: "int32"
+        description: "User Status"
+      address:
+        $ref: "#/definitions/Address"
+    xml:
+      name: "Customer"
+  Tag:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+    xml:
+      name: "Tag"

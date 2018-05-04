@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="set-target-url">
+    <DisplayName>set-target-url</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://set-target-url.js</ResourceURL>
+</Javascript>

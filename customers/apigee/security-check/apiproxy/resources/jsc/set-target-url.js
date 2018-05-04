@@ -1,0 +1,1 @@
+ context.setVariable('target.url', context.getVariable('request.header.X-Cf-Forwarded-Url'));

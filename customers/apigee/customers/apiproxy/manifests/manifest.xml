@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest>
+    <Policies>
+        <VersionInfo resourceName="Service-Callout-1" version="5f70b73d3625f03ba1ecd229194c2f77bd7b12f60e7f7fbb3580b3894bd44c45c85507532ba164ef62c98117548c4842a18281a6424af5e403d0ca87bb109b9a"/>
+        <VersionInfo resourceName="cf-get-target-url" version="3e372d72c3a19933b27a5128fe4f13ec413d0ac839f151a6c1500ebecfd84fe0a86cd14b34f0a38369092d6330c20c988326971d339666a93c9a400e575c1f49"/>
+        <VersionInfo resourceName="cf-set-target-url" version="269543f75338853f2af1ab36bcbb179a94738b0d97c079b7904d3461834758702724527298ddab77c9bba04d1b8320c118b799dd7746a0b92bb283de1c1821d3"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="49ec1737c1dcb872548b9f073316834ca658c54b51ab8e9f9b718d3a4705f244f4a797e957679aded2dca14a674509dcd666e59c22ddff9a0afe8272ad2cdfb4"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://cf-get-target-url.js" version="0ed3a116c1242d2daf604165854074b8e80c081dd80786c6305397dc0fc26901502f1d4430578d3461845d32462dbc431f84e3cb4044740148d5d3090b05b11a"/>
+        <VersionInfo resourceName="jsc://cf-set-target-url.js" version="19ab4604529a96dcaeac7cbe634b66e81a5c9c883115927e8c530c87f9aea2a4314853b128f554c4cf8f679c8d28957c8777b21ca620f46c709a28959ad02421"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="1c9d84bb708fd3a340322292d469c0c7734b0bcb01e3294df58c740d31b8d44de27c841c37a095e89bca474fa216a4f90997889324d843aaaef4db7589cb6541"/>
+    </TargetEndpoints>
+</Manifest>

@@ -1,0 +1,73 @@
+{
+    "version": "1.0",
+    "envConfig": {
+        "test": {
+          "targetServers": [
+
+          ],
+          "caches": [
+          ],
+          "kvms": [
+          ]
+        },
+        "prod": {
+          "targetServers": [
+
+          ],
+          "caches": [
+          ],
+          "kvms": [
+          ]
+        }
+    },
+    "orgConfig": {
+        "apiProducts": [
+            {
+                "name": "security-check-Product",
+                "apiResources": [
+                    "/",
+                    "/**"
+                ],
+                "approvalType": "auto",
+                "attributes": [
+                    {
+                        "name": "description",
+                        "value": "Product for Apigee OAuth for Pivotal"
+                    }
+                ],
+                "description": "Product for Apigee OAuth for Pivotal",
+                "displayName": "security-check-Product",
+                "environments": [
+                    "test",
+                    "prod"
+                ],
+                "proxies": [
+                    "security-check"
+                ],
+                "quota": "10000",
+                "quotaInterval": "1",
+                "quotaTimeUnit": "month",
+                "scopes": []
+            }
+        ],
+        "developers": [
+            {
+                "email": "appdeveloper@email.com",
+                "firstName": "app",
+                "lastName": "developer",
+                "userName": "developertraining@example.com",
+                "attributes": []
+            }
+        ],
+        "developerApps": {
+            "appdeveloper@email.com": [
+                {
+                    "name": "security-check",
+                    "apiProducts": [ "security-check-Product" ],
+                    "callbackUrl": "",
+                    "scopes": []
+                }
+            ]
+        }
+    }
+}

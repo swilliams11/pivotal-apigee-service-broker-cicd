@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="security-check">
+    <Basepaths>/security-check</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1520990920438</CreatedAt>
+    <Description>Demonstrates the Verify API policy.</Description>
+    <DisplayName>security-check</DisplayName>
+    <LastModifiedAt>1521003249491</LastModifiedAt>
+    <ManifestVersion>e10130e47f07dc7d55d023993b09d737e9f3ddc7752a35368420bc4d2bd43bc7a48b334cbdd7fb3bca4b1b1f2bc9ab74d6a03890ad8ebe10ea156b88ab37ac66</ManifestVersion>
+    <Policies>
+        <Policy>OAuth-v20</Policy>
+        <Policy>impose-quota</Policy>
+        <Policy>remove-query-param-apikey</Policy>
+        <Policy>set-target-url</Policy>
+        <Policy>verify-api-key</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://set-target-url.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

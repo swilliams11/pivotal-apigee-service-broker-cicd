@@ -1,0 +1,7 @@
+---
+applications:
+- name: customers-nodeapp
+  memory: 128M
+  instances: 1
+  path: .
+  buildpack: nodejs_buildpack

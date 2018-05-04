@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest>
+    <Policies>
+        <VersionInfo resourceName="OAuth-v20" version="5841d78fd4cec2783863cd2edcf8eb1cacdd4b82fa9a4105451a7efc0845845aa305af4a815ec825612bcfafe57dbc5ba6341e09bdea05dc935c130acf86ea32"/>
+        <VersionInfo resourceName="impose-quota" version="f9fe3f4f58673f6760ca417b38e4e30b6d110c38e1a595a01fc4aac4159fe9e5ebb4492d1212320a6446aa7e08e7590c2eb5fc80bf2f9906c1c67824401f2412"/>
+        <VersionInfo resourceName="remove-query-param-apikey" version="fedac28ff50d0bca86015a692d1b6e093718a7c700308eebb8b74c4b95a71815a7bc9dd92d2809176c881a6affe89177a87205bb9ae618083036394d199b3d05"/>
+        <VersionInfo resourceName="set-target-url" version="c857bc9198ab579802782ec2c9ddd0dcdad1576730a90f33a68dd6b8708b90d78ef26769ac053b83218140f078923327705e7f0eb9b7dc1e46b48b94424ec827"/>
+        <VersionInfo resourceName="verify-api-key" version="6595defb9a0b6d7fce111a9fe959f5e8a7aa03ffb301373c4c4e20e814648b42d5858631e95e4a8d698b5fe2139390c252e9011d9f1be8c3a35de73c1c269f97"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="55419b9ca3e9e8671529b2ccfaacda45c15a93faad4731d4ea1515c7ae94148a8e62bb9935baaa2413f1e5affd7d271befe3124d534cfb0da65ec820810cd281"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://set-target-url.js" version="eef0410131b33321cdb251b23f1ace5616447d0b3a08308536cc567068451942188c88ee1e78514f0cd3538317556b9161a1853d268a6cb7e4322a6902f69704"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="b51bef469ecd187468146e8c8d2368d4cc3746854aadd1310d5b44280296a688c80e90c9465a680e0a693c4a51a65c668489daab7fc9ff9c0fb0b4ede2a65ae9"/>
+    </TargetEndpoints>
+</Manifest>
