@@ -111,6 +111,8 @@ You should have a username and password binding.  This username and password is 
 ### Build
 The build script is shown below.  Anything that starts with `$` is an environment variable that is defined as a parameter for the Jenkins job.
 
+The build script will
+
 ```py
 #!/usr/bin/env python
 
@@ -119,11 +121,12 @@ import  json,sys,requests,os,time
 #set the environment variables
 #print(os.environ["apigee_username"]);
 #proxy_name = os.environ["proxy_name"];
-apigee_env = os.environ["apigee_env"];
-apigee_org = os.environ["apigee_org"];
-apigee_domain = os.environ["apigee_domain"];
-#apigee_role = os.environ["apigee_role"];
-apigee_user = os.environ["apigee_user"].strip(); #api developer with custom role
+apigee_env = os.environ["apigee_env"]
+apigee_org = os.environ["apigee_org"]
+apigee_domain = os.environ["apigee_domain"]
+apigee_role = os.environ["apigee_role"]
+apigee_user = os.environ["apigee_user"].strip() #api developer with custom role
+#apigee_user = os.environ["BUILD_USER_EMAIL"]
 
 # find the proxy name from the uri
 def getProxyName(uri):
