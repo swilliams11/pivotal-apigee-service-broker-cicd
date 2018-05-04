@@ -41,13 +41,17 @@ The `customers` folder includes a sample CF application and an `apigee` folder t
 * Apigee Edge free/paid org
 
 
-## Shell script
+## Shell scripts
 The `cf_deploy_app.sh` will execute the following items
 1. cf push
 2. cf apigee-bing-org "proxy bind" (create the proxy in Apigee and bind to CF app)
 3. issue a curl command to Jenkins to associate the proxy to the developer's role
 
-### Shell script arguments
+The `jenkins_build.sh` sends a curl command to Jenkins to build assign the proxy the user just created to their developer role.
+
+The `cf_cleanup.sh` will unbind the CF app from the Apigee proxy and then delete the CF app.
+
+### cf_deploy_app.sh script arguments
 1. jenkinsdomain - domain name
 2. foldername - folder name that contains the PCF/CF manifest.yaml
 3. apigee_username - Apigee Edge username
@@ -59,6 +63,22 @@ cf_deploy_app.sh jenkins-deploy.net customers user@email.com -k"
 
 * The `cf apigee-bind-org` will ask you to enter your Apigee Edge password first.
 * Then the script will ask for your Jenkins password.  
+
+### jenkins_build.sh script arguments
+1. jenkinsdomain - domain name
+2. apigee_username - Apigee Edge username
+3. -k to ignore self-signed cert errors
+
+```
+jenkins_build.sh jenkins-deploy.net user@email.com -k"
+```
+
+### cf_cleanup.sh script arguments
+1. cf app name
+
+```
+./cf_cleanup.sh appname
+```
 
 ## Jenkins Job
 The Jenkins job is a freestyle project with a build trigger.
