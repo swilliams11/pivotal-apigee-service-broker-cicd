@@ -7,6 +7,7 @@ if [ $# -lt 3 ]
   then
     echo "cf_deploy_app.sh jenkinsdomain foldername apigee_username -k ignorecerterrors"
     echo "i.e. cf_deploy_app.sh jenkins-deploy.net customers user@email.com -k"
+    exit 1
 fi
 
 if [ $# -eq 4 ]
@@ -15,6 +16,7 @@ if [ $# -eq 4 ]
       then
         echo "You must enter -k to ignore certificate errors"
         echo "i.e. cf_deploy_app.sh jenkins-deploy.net customers user@email.com -k"
+        exit 1
     fi
 fi
 
