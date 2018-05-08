@@ -49,9 +49,9 @@ The `cf_deploy_app.sh` will execute the following items:
 3. issue a curl command to Jenkins to associate the proxy to the developer's role
 
 
-The `jenkins_build.sh` sends a curl command to Jenkins to build assign the proxy the user just created to their developer role.
+The `jenkins_build.sh` sends a curl command to Jenkins to start the build that will assign the proxy the developer role that created the proxy.
 
-The `cf_cleanup.sh` will unbind the CF app from the Apigee proxy and then delete the CF app.
+The `cf_cleanup.sh` will unbind the CF app from the Apigee proxy and then delete the CF app.  Make sure to delete the proxy from Apigee Edge.
 
 ### cf_deploy_app.sh script arguments
 1. jenkinsdomain - domain name
@@ -67,6 +67,8 @@ cf_deploy_app.sh jenkins-deploy.net customers user@email.com -k"
 * Then the script will ask for your Jenkins password.  
 
 ### jenkins_build.sh script arguments
+This script is called by the `cf_deploy_app.sh` script.  You can execute this script directly by including the following arguments.  
+
 1. jenkinsdomain - domain name
 2. apigee_username - Apigee Edge username
 3. -k to ignore self-signed cert errors
@@ -76,7 +78,8 @@ jenkins_build.sh jenkins-deploy.net user@email.com -k"
 ```
 
 ### cf_cleanup.sh script arguments
-1. cf app name
+This script removes unbinds the CF app from the Apigee proxy and deletes the CF app.  The command arguments are:
+1. Cloud Foundry app name
 
 ```
 ./cf_cleanup.sh appname
@@ -91,7 +94,7 @@ Make sure to select "This project is parameterized." I have the following parame
 * apigee_env
 * apigee_org
 * apigee_domain - domain name of where management API requests should be sent
-* apigee_role - role of the user which should be update.  This should be removed in a prod Jenkins setup.
+* apigee_role - role of the user which should be update.  This should be removed in a prod Jenkins setup.  The role is extracted from the Apigee Audit record.  
 
 ### Build trigger
 Enable a build trigger in the Jenkins job by selecting "Trigger builds remotely" and then enter an authentication token.
@@ -105,13 +108,23 @@ You can pass additional parameters to the Jenkins build by including them as a q
 curl -X GET https://IP_or_DOMAIN/job/cloud-foundry-apigee-service-broker-update-proxy-role/buildWithParameters?token=update_apigee_proxy_role&proxy_name=PROXY_NAME
 ```
 
+The final request is shown below.  The password is extracted from a command prompt before the request is sent to the Jenkins server.
+```
+curl -X GET -u "apigee_username:apigee_password" https://IP_or_DOMAIN/job/cloud-foundry-apigee-service-broker-update-proxy-role/buildWithParameters?token=update_apigee_proxy_role&apigee_user=apigee_username
+```
+
 ### Bindings
 You should have a username and password binding.  This username and password is the Apigee org admin username and password that will send the Apigee management API requests to assign the proxy to a role.
 
 ### Build
 The build script is shown below.  Anything that starts with `$` is an environment variable that is defined as a parameter for the Jenkins job.
 
-The build script will
+The build script:
+* fetches the audit history for the past 4 hours
+* extracts the username included in the request
+* searches the audit history for the proxy that was created by the above user
+* obtains the users role
+* updates the role with the appropriate permissions to access the proxy
 
 ```py
 #!/usr/bin/env python
